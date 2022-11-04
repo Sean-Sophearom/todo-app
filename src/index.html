@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- For Time Picker -->
+    <link rel="stylesheet" href="../timepicker/metroui.css" />
+    <script defer src="../timepicker/metroui.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./index.js" defer></script>
+    <title>Todo App</title>
+  </head>
+  <body class="text-white">
+    <div class="box">
+      <div class="left-box">
+        <h1 class="display-name" data-display="name">Select a task...</h1>
+        <div class="display-time" data-display="time">
+          <span class="time">0</span>
+          <span class="time">0</span>
+          <span class="time">0</span>
+          <span class="time-label">HOURS</span>
+          <span class="time-label">MINUTES</span>
+          <span class="time-label">SECONDS</span>
+        </div>
+        <div class="btn-container">
+          <button class="btn" data-btn="start">Start</button>
+          <button class="btn" data-btn="stop">Stop</button>
+          <button class="btn" data-btn="cancel">Cancel</button>
+          <button class="btn" data-btn="complete">Complete</button>
+        </div>
+      </div>
+
+      <form class="right-box" onsubmit="my_app.handleAdd(event)">
+        <h2>Create your task list</h2>
+        <div>
+          <h4>Input your task</h4>
+          <input placeholder="e.g. do homework..." type="text" id="task-name" data-input="task-name" />
+        </div>
+        <div class="options-container">
+          <div>
+            <h4>Pick an option</h4>
+            <div class="radio-container">
+              <label for="big-rock">
+                <input type="radio" name="task-type" id="big-rock" value="Big Rock" data-input="task-type" checked />
+                Big Rock
+              </label>
+              <label for="small-rock">
+                <input type="radio" name="task-type" id="small-rock" value="Small Rock" data-input="task-type" />
+                Small Rock
+              </label>
+            </div>
+          </div>
+          <div>
+            <h4>Set up your time</h4>
+            <input
+              class="text-black"
+              data-role="timepicker"
+              data-value="00:00:00"
+              data-on-set="my_app.handleTimeInput(arguments)"
+            />
+          </div>
+        </div>
+        <div class="flex justify-center items-center">
+          <button type="submit">ADD TODO</button>
+        </div>
+        <ul data-role="all_tasks_container" class="all_tasks_container"></ul>
+      </form>
+    </div>
+  </body>
+</html>
